@@ -12,6 +12,11 @@ output "private_subnets" {
   value       = module.vpc.private_subnets
 }
 
+output "private_subnets_cidr_blocks" {
+  description = "A list of private subnets CIDRs"
+  value       = module.vpc.private_subnets_cidr_blocks
+}
+
 output "ecs_cluster_id" {
   description = "The ID of the ECS cluster"
   value       = module.ecs.cluster_id
