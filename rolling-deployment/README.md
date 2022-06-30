@@ -53,7 +53,7 @@ The AWS resources created by the script are detailed bellow:
 The following diagram represents the Infrastructure architecture being deployed with this project:
 
 <p align="center">
-  <img src="../../docs/infrastructure_architecture.png"/>
+  <img src="../docs/infrastructure_architecture.png"/>
 </p>
 
 ### Infrastructure considerations due to demo proposals
@@ -68,7 +68,7 @@ Feel fre to create a subscriptor for the SNS topic created by this code, in orde
 The following diagram represents the CI/CD architecture being deployed with this project:
 
 <p align="center">
-  <img src="../../docs/cicd_architecture_rolling.png"/>
+  <img src="../docs/cicd_architecture_rolling.png"/>
 </p>
 
 ## Prerequisites
