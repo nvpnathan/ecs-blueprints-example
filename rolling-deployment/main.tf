@@ -234,9 +234,12 @@ module "codepipeline" {
   pipe_role                = module.devops_role.devops_role_arn
   s3_bucket                = module.codepipeline_s3_bucket.s3_bucket_id
   github_token             = var.github_token
-  repo_owner               = var.repository_owner
-  repo_name                = var.repository_name
-  branch                   = var.repository_branch
+  app_repo_owner           = var.app_repository_owner
+  app_repo_name            = var.app_repository_name
+  app_branch               = var.app_repository_branch
+  env_repo_owner           = var.env_repository_owner
+  env_repo_name            = var.env_repository_name
+  env_branch               = var.env_repository_branch
   codebuild_project_client = module.codebuild_client.project_id
   sns_topic                = aws_sns_topic.codestar_notification.arn
 

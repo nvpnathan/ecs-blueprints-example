@@ -25,17 +25,32 @@ variable "github_token" {
   sensitive   = true
 }
 
-variable "repo_owner" {
+variable "app_repo_owner" {
   description = "The username of the Github repository owner"
   type        = string
 }
 
-variable "repo_name" {
+variable "app_repo_name" {
   description = "Github repository's name"
   type        = string
 }
 
-variable "branch" {
+variable "app_branch" {
+  description = "Github branch used to trigger the CodePipeline"
+  type        = string
+}
+
+variable "env_repo_owner" {
+  description = "The username of the Github repository owner"
+  type        = string
+}
+
+variable "env_repo_name" {
+  description = "Github repository's name"
+  type        = string
+}
+
+variable "env_branch" {
   description = "Github branch used to trigger the CodePipeline"
   type        = string
 }

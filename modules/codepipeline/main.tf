@@ -11,7 +11,7 @@ resource "aws_codepipeline" "aws_codepipeline" {
     name = "Source"
 
     action {
-      name             = "Source"
+      name             = "App_Source"
       category         = "Source"
       owner            = "ThirdParty"
       provider         = "GitHub"
@@ -20,10 +20,27 @@ resource "aws_codepipeline" "aws_codepipeline" {
 
       configuration = {
         OAuthToken           = var.github_token
-        Owner                = var.repo_owner
-        Repo                 = var.repo_name
-        Branch               = var.branch
+        Owner                = var.app_repo_owner
+        Repo                 = var.app_repo_name
+        Branch               = var.app_branch
         PollForSourceChanges = true
+      }
+    }
+
+      action {
+      name             = "Env_Source"
+      category         = "Source"
+      owner            = "ThirdParty"
+      provider         = "GitHub"
+      version          = "1"
+      output_artifacts = ["EnvSourceArtifact"]
+
+      configuration = {
+        OAuthToken           = var.github_token
+        Owner                = var.env_repo_owner
+        Repo                 = var.env_repo_name
+        Branch               = var.env_branch
+        PollForSourceChanges = false
       }
     }
   }
