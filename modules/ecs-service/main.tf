@@ -58,8 +58,6 @@ resource "aws_ecs_task_definition" "this" {
   cpu                      = var.cpu
   memory                   = var.memory
   execution_role_arn       = aws_iam_role.execution.arn
-  task_role_arn            = aws_iam_role.task.arn
-
   container_definitions = jsonencode([
     {
       cpu : var.cpu,
@@ -121,31 +119,3 @@ resource "aws_iam_role_policy_attachment" "execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
-################################################################################
-# Task Role
-################################################################################
-
-resource "aws_iam_role" "task" {
-  name               = "${var.name}-task"
-  assume_role_policy = data.aws_iam_policy_document.task.json
-
-  tags = var.tags
-}
-
-data "aws_iam_policy_document" "task" {
-  statement {
-    actions = ["sts:AssumeRole"]
-    principals {
-      type        = "Service"
-      identifiers = ["ecs-tasks.amazonaws.com"]
-    }
-  }
-}
-
-resource "aws_iam_role_policy" "task" {
-  count = var.attach_task_role_policy ? 1 : 0
-
-  name   = "${var.name}-task"
-  role   = aws_iam_role.task.id
-  policy = var.task_role_policy
-}

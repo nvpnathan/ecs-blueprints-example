@@ -49,12 +49,6 @@ variable "ecs_role" {
   type        = string
 }
 
-variable "server_alb_url" {
-  description = "The server ALB DNS. Used to build the code for the frontend layer"
-  type        = string
-  default     = ""
-}
-
 variable "ecs_task_role" {
   description = "The name of the ECS Task role to specify in the Task Definition"
   type        = string

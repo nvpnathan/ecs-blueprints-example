@@ -40,11 +40,6 @@ variable "branch" {
   type        = string
 }
 
-variable "codebuild_project_server" {
-  description = "Server's CodeBuild project name"
-  type        = string
-}
-
 variable "codebuild_project_client" {
   description = "Client's CodeBuild project name"
   type        = string
@@ -67,8 +62,3 @@ variable "client_deploy_configuration" {
   default     = {}
 }
 
-variable "server_deploy_configuration" {
-  description = "The configuration to use for the server deployment"
-  type        = map(string)
-  default     = {}
-}

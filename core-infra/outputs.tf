@@ -17,6 +17,11 @@ output "private_subnets_cidr_blocks" {
   value       = module.vpc.private_subnets_cidr_blocks
 }
 
+output "ecs_cluster_name" {
+  description = "The name of the ECS cluster"
+  value       = module.ecs.cluster_name
+}
+
 output "ecs_cluster_id" {
   description = "The ID of the ECS cluster"
   value       = module.ecs.cluster_id

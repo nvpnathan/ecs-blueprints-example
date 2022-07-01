@@ -71,11 +71,6 @@ resource "aws_codebuild_project" "aws_codebuild" {
       name  = "ECS_TASK_ROLE"
       value = var.ecs_task_role
     }
-
-    environment_variable {
-      name  = "SERVER_ALB_URL"
-      value = var.server_alb_url
-    }
   }
 
   logs_config {
