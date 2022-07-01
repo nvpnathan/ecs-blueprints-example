@@ -16,7 +16,7 @@ resource "aws_codepipeline" "aws_codepipeline" {
       owner            = "ThirdParty"
       provider         = "GitHub"
       version          = "1"
-      output_artifacts = ["SourceArtifact"]
+      output_artifacts = ["AppSourceArtifact"]
 
       configuration = {
         OAuthToken           = var.github_token
@@ -54,7 +54,7 @@ resource "aws_codepipeline" "aws_codepipeline" {
       owner            = "AWS"
       provider         = "CodeBuild"
       version          = "1"
-      input_artifacts  = ["SourceArtifact"]
+      input_artifacts  = ["AppSourceArtifact", "EnvSourceArtifact"]
       output_artifacts = ["BuildArtifact_client"]
 
       configuration = {
