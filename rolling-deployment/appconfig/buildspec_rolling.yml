@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPO_URL $FOLDER_PATH
+      - docker build -t $REPO_URL $CODEBUILD_SRC_DIR_AppSourceArtifact
   post_build:
     commands:
       - echo Build completed on `date`
