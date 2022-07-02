@@ -10,6 +10,8 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t $REPO_URL $CODEBUILD_SRC_DIR_AppSourceArtifact
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   post_build:
     commands:
       - echo Build completed on `date`
@@ -28,5 +30,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: 'appconfig/artifacts'
+  base-directory: '$CODEBUILD_SRC_DIR/rolling-deployment/appconfig/artifacts'
   discard-paths: yes
