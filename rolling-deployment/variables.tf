@@ -72,7 +72,7 @@ variable "buildspec_path" {
 variable "folder_path_client" {
   description = "The location of the client files"
   type        = string
-  default     = "./"
+  default     = "$CODEBUILD_SRC_DIR_AppSourceArtifact"
 }
 
 variable "app_repository_owner" {

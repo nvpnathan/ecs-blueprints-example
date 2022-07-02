@@ -16,9 +16,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPO_URL:$IMAGE_TAG
       - echo Preparing spec files in new folder
-      - ls
-      - ls /
-      - cd /ecs-blueprint-example/appconfig
+      - cd $CODEBUILD_SRC_DIR
       - mkdir artifacts
       - cp imagedefinition.json artifacts/imagedefinition.json
       - echo Changing directory to the artifacts directory
