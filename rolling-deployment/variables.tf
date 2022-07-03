@@ -66,13 +66,13 @@ variable "env_repository_branch" {
 variable "buildspec_path" {
   description = "The location of the buildspec file"
   type        = string
-  default     = "rolling-deployment/appconfig/buildspec_rolling.yml"
+  default     = "../01/rolling-deployment/appconfig/buildspec_rolling.yml"
 }
 
 variable "folder_path_client" {
   description = "The location of the client files"
   type        = string
-  default     = "$CODEBUILD_SRC_DIR_AppSourceArtifact"
+  default     = "$CODEBUILD_SRC_DIR"
 }
 
 variable "app_repository_owner" {
