@@ -59,7 +59,7 @@ resource "aws_codepipeline" "aws_codepipeline" {
 
       configuration = {
         ProjectName = var.codebuild_project_client
-        PrimarySource = "EnvSourceArtifact"
+        PrimarySource = "AppSourceArtifact"
       }
     }
   }

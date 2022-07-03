@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t $REPO_URL $CODEBUILD_SRC_DIR_AppSourceArtifact
+      - docker build -t $REPO_URL $CODEBUILD_SRC_DIR
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - docker tag $REPO_URL:latest $REPO_URL:$IMAGE_TAG
@@ -19,7 +19,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPO_URL:$IMAGE_TAG
       - echo Preparing spec files in new folder
-      - cd $CODEBUILD_SRC_DIR/rolling-deployment/appconfig/
+      - cd $CODEBUILD_SRC_DIR_EnvSourceArtifact/rolling-deployment/appconfig/
       - mkdir artifacts
       - cp imagedefinition.json artifacts/imagedefinition.json
       - echo Changing directory to the artifacts directory
@@ -32,5 +32,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: '$CODEBUILD_SRC_DIR/rolling-deployment/appconfig/artifacts'
+  base-directory: '$CODEBUILD_SRC_DIR_EnvSourceArtifact/rolling-deployment/appconfig/artifacts'
   discard-paths: yes
