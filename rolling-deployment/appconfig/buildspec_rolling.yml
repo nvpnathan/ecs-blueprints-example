@@ -26,7 +26,8 @@ phases:
       - cd artifacts
       - echo Preparating artifacts
       - sed -i "s|<CONTAINER_NAME>|$CONTAINER_NAME|g" imagedefinition.json
-      - sed -i "s|<REPO_URL>|$REPO_URL:$IMAGE_TAG|g" imagedefinition.json
+      - sed -i "s|<REPO_URL>|$REPO_URL|g" imagedefinition.json
+      - sed -i "s|<IMAGE_TAG>|$IMAGE_TAG|g" imagedefinition.json
 
 artifacts:
   files:
