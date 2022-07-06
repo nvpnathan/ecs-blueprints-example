@@ -31,7 +31,7 @@ module "server_alb_security_group" {
 
   ingress_with_source_security_group_id = [
     {
-      rule                     = "3001-tcp"
+      rule                     = "http-80-tcp"
       source_security_group_id = var.client_security_group
     },
   ]
@@ -57,8 +57,8 @@ module "server_alb" {
 
   http_tcp_listeners = [
     {
-      port               = 3001
-      protocol           = "TCP"
+      port               = 80
+      protocol           = "HTTP"
       target_group_index = 0
     },
   ]
@@ -66,8 +66,8 @@ module "server_alb" {
   target_groups = [
     {
       name             = "server"
-      backend_protocol = "TCP"
-      backend_port     = 3001
+      backend_protocol = "HTTP"
+      backend_port     = 80
       target_type      = "ip"
       health_check = {
         path    = "/status"
@@ -150,6 +150,9 @@ module "server_task_security_group" {
 
 module "ecs_service_app" {
   source = "../modules/ecs-service"
+  
+  ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
+  attach_task_role_policy = true
 
   name           = "${local.name}-server"
   desired_count  = 1

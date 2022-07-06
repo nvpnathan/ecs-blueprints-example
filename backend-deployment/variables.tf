@@ -1,3 +1,10 @@
+# Frontend Deployment Outputs
+variable "client_security_group" {
+  description = "Client Security Group ID"
+  type        = string
+}
+
+# Core infra Outputs
 variable "ecs_cluster_id" {
   description = "Core-infra ECS Cluster ID"
   type        = string
@@ -35,12 +42,6 @@ variable "public_subnets" {
 
 variable "vpc_id" {
   description = "Core-infra VPC ID"
-  type        = string
-}
-
-# Application Repo
-variable "client_security_group" {
-  description = "Client Security Group ID"
   type        = string
 }
 
@@ -89,7 +90,7 @@ variable "app_repository_owner" {
 variable "app_repository_name" {
   description = "The name of the Github repository"
   type        = string
-  default     = "ecs-client-backend"
+  default     = "ecs-server-backend"
 }
 
 variable "app_repository_branch" {
