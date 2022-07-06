@@ -110,6 +110,9 @@ module "client_task_security_group" {
 
 module "ecs_service_app" {
   source = "../modules/ecs-service"
+  
+  ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
+  attach_task_role_policy = false
 
   name           = "${local.name}-client"
   desired_count  = 1

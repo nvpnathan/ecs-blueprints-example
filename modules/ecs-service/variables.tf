@@ -9,6 +9,11 @@ variable "tags" {
   default     = {}
 }
 
+variable "ecs_task_execution_role_arn" {
+  description = "Core-infra ECS execution ARN"
+  type        = string
+}
+
 ################################################################################
 # Service
 ################################################################################

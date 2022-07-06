@@ -23,11 +23,6 @@ output "task_definition_family" {
   value       = aws_ecs_task_definition.this.family
 }
 
-output "task_execution_role_arn" {
-  description = "The ARN of the task execution role"
-  value       = aws_iam_role.execution.arn
-}
-
 output "task_role_arn" {
   description = "The ARN of the task role"
   value       = aws_iam_role.task.arn
