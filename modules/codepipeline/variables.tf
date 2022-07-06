@@ -55,7 +55,7 @@ variable "env_branch" {
   type        = string
 }
 
-variable "codebuild_project_client" {
+variable "codebuild_project_app" {
   description = "Client's CodeBuild project name"
   type        = string
 }
@@ -71,7 +71,7 @@ variable "deploy_provider" {
   default     = "ECS"
 }
 
-variable "client_deploy_configuration" {
+variable "app_deploy_configuration" {
   description = "The configuration to use for the client deployment"
   type        = map(string)
   default     = {}
