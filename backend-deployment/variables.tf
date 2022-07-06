@@ -71,7 +71,7 @@ variable "env_repository_branch" {
 variable "buildspec_path" {
   description = "The location of the buildspec file"
   type        = string
-  default     = "../01/rolling-deployment/appconfig/buildspec_rolling.yml"
+  default     = "../01/backend-deployment/appconfig/buildspec_rolling.yml"
 }
 
 variable "folder_path_app" {

@@ -19,7 +19,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPO_URL:$IMAGE_TAG
       - echo Preparing spec files in new folder
-      - cd $CODEBUILD_SRC_DIR_EnvSourceArtifact/rolling-deployment/appconfig/
+      - cd $CODEBUILD_SRC_DIR_EnvSourceArtifact/backend-deployment/appconfig/
       - mkdir artifacts
       - cp imagedefinition.json artifacts/imagedefinition.json
       - echo Changing directory to the artifacts directory
@@ -32,5 +32,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: '$CODEBUILD_SRC_DIR_EnvSourceArtifact/rolling-deployment/appconfig/artifacts'
+  base-directory: '$CODEBUILD_SRC_DIR_EnvSourceArtifact/backend-deployment/appconfig/artifacts'
   discard-paths: yes
