@@ -5,6 +5,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+      - echo "Client build, embedding frontend layer file with ALB backend DNS"
+      - sed -i "s|<SERVER_ALB_URL>|$SERVER_ALB_URL|g" .src/services/RestServices.js
   build:
     commands:
       - echo Build started on `date`

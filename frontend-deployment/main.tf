@@ -112,9 +112,9 @@ module "ecs_service_app" {
   source = "../modules/ecs-service"
   
   ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
-  attach_task_role_policy = false
-
-  name           = "${local.name}-client"
+  attach_task_role_policy     = true
+  
+  name           = "${local.name}"
   desired_count  = 1
   ecs_cluster_id = var.ecs_cluster_id
 
@@ -127,12 +127,13 @@ module "ecs_service_app" {
   deployment_controller = "ECS"
 
   # Task Definition
-  container_name   = "${local.name}-client"
+  container_name   = "${local.name}"
   container_port   = local.app_client_port
   cpu              = 256
   memory           = 512
   image            = module.app_ecr.repository_url
-
+  task_role_policy = data.aws_iam_policy_document.task_role.json
+  
   tags = local.tags
 }
 
@@ -145,6 +146,18 @@ module "ecs_autoscaling_client" {
   max_capacity     = 5
   cpu_threshold    = 75
   memory_threshold = 74
+}
+
+data "aws_iam_policy_document" "task_role" {
+  statement {
+    actions = [
+      "ssmmessages:CreateControlChannel",
+      "ssmmessages:CreateDataChannel",
+      "ssmmessages:OpenControlChannel",
+      "ssmmessages:OpenDataChannel"
+    ]
+    resources = ["*"]
+  }
 }
 
 ################################################################################

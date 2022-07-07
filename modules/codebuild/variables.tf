@@ -55,3 +55,8 @@ variable "ecs_task_role" {
   default     = "null"
 }
 
+variable "server_alb_url" {
+  description = "Backend CNAME for ALB"
+  type        = string
+  default     = "backend.acme.local"
+}

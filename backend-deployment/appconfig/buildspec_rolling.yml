@@ -5,6 +5,10 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+      - echo "Replacing table name in the server function"
+      - sed -i "s|DYNAMODB_TABLE|$DYNAMODB_TABLE|g" ./src/app.js
+      - echo "Adding Swagger host"
+      - sed -i "s|<SERVER_ALB_URL>|$SERVER_ALB_URL|g" ./src/swagger/swagger.js
   build:
     commands:
       - echo Build started on `date`

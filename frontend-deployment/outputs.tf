@@ -4,6 +4,6 @@ output "application_url" {
 }
 
 output "client_security_group" {
-  value = module.client_alb_security_group.security_group_id
+  value = module.client_task_security_group.security_group_id
   description = "Ingress source for backend application"
 }

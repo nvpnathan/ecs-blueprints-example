@@ -154,7 +154,7 @@ module "ecs_service_app" {
   ecs_task_execution_role_arn = var.ecs_task_execution_role_arn
   attach_task_role_policy = true
 
-  name           = "${local.name}-server"
+  name           = "${local.name}"
   desired_count  = 1
   ecs_cluster_id = var.ecs_cluster_id
 
@@ -167,7 +167,7 @@ module "ecs_service_app" {
   deployment_controller = "ECS"
 
   # Task Definition
-  container_name   = "${local.name}-server"
+  container_name   = "${local.name}"
   container_port   = local.app_server_port
   cpu              = 256
   memory           = 512
