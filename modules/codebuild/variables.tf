@@ -60,3 +60,9 @@ variable "server_alb_url" {
   type        = string
   default     = "backend.acme.local"
 }
+
+variable "dynamodb_table_name" {
+  description = "The name of Dynamodb table used by the server application"
+  type        = string
+  default     = ""
+}

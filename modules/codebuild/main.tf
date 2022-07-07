@@ -33,6 +33,11 @@ resource "aws_codebuild_project" "aws_codebuild" {
     }
 
     environment_variable {
+      name  = "DYNAMODB_TABLE"
+      value = var.dynamodb_table_name
+    }
+    
+    environment_variable {
       name  = "TASK_DEFINITION_FAMILY"
       value = var.task_definition_family
     }
