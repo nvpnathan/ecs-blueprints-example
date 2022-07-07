@@ -267,7 +267,8 @@ module "codebuild_app" {
   service_port           = local.app_server_port
   ecs_role               = "${local.name}-ecs"
   ecs_task_role          = module.ecs_service_app.task_role_arn
-
+  dynamodb_table_name    = module.assets_dynamodb_table.name
+  
   tags = local.tags
 }
 
